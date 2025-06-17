@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CUSTOMIZE: Replace {{projectTitle}} with your application's title -->
+    <title>Subnet Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- TEMPLATE HEADER - CUSTOMIZE AS NEEDED -->
+        <header>
+            <div class="header-bar">
+                <!-- CUSTOMIZE: Replace {{projectTitle}} with your application's name -->
+                <h1>Subnet Calculator</h1>
+                <!-- KEEP: Theme toggle button - provides dark/light mode functionality -->
+                <button id="theme-toggle-btn" class="theme-toggle-btn" aria-describedby="theme-help" title="Toggle Dark Mode">&#9728;&#65039;</button>
+            </div>
+            <div id="theme-help" class="sr-only">Switch between light and dark theme</div>
+            <!-- CUSTOMIZE: Replace {{projectDescription}} with your application's description -->
+            <p>Calculate IPv4 and IPv6 subnets with network information</p>
+        </header>
+        
+        <!-- MAIN APPLICATION CONTENT - CUSTOMIZE THIS ENTIRE SECTION -->
+        <main>
+            <!-- IP Address Input Section -->
+            <div class="input-section">
+                <label for="main-input">IP Address/Network:</label>
+                <input type="text" id="main-input" placeholder="e.g., 192.168.1.0/24, 192.168.1.1, or 2001:db8::1" aria-describedby="input-help">
+                <div id="input-help" class="sr-only">Enter an IP address with optional CIDR notation for subnet calculation</div>
+            </div>
+            
+            <!-- IP Subnet Check Section -->
+            <div class="input-section">
+                <label for="subnet-check-input">Check if IP is in subnet:</label>
+                <input type="text" id="subnet-check-input" placeholder="e.g., 192.168.1.100 (check against calculated subnet)" aria-describedby="subnet-check-help">
+                <div id="subnet-check-help" class="sr-only">Enter an IP address to check if it belongs to the calculated subnet</div>
+            </div>
+            
+            <!-- Subnet Shift Section -->
+            <div class="input-section">
+                <label for="subnet-shift-input">Shift subnet (new CIDR):</label>
+                <input type="number" id="subnet-shift-input" placeholder="e.g., 26 (smaller subnets) or 22 (larger supernet)" min="0" max="128" aria-describedby="subnet-shift-help">
+                <div id="subnet-shift-help" class="sr-only">Enter a CIDR value to create subnets (higher number) or supernets (lower number)</div>
+            </div>
+            
+            <!-- Output Format Selection -->
+            <div class="format-section">
+                <fieldset>
+                    <legend>Output format:</legend>
+                    <button class="fmt-btn selected" data-format="default" role="radio" aria-checked="true">Standard</button>
+                    <button class="fmt-btn" data-format="compact" role="radio" aria-checked="false">Compact</button>
+                    <button class="fmt-btn" data-format="detailed" role="radio" aria-checked="false">Detailed</button>
+                </fieldset>
+            </div>
+            
+            <!-- Main Calculation Button -->
+            <button id="process-btn" class="process-btn" aria-describedby="process-help">Calculate</button>
+            <div id="process-help" class="sr-only">Calculate subnet information and check IP membership if both fields are filled</div>
+            
+            <!-- KEEP: Results container - This gets populated by JavaScript -->
+            <!-- The structure is managed by main.ts - customize the display logic there -->
+            <div id="results" class="results-section">
+                <div id="output" class="output"></div>
+                <div id="results-list" class="results-list"></div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- EXTERNAL LIBRARIES: Add any CDN links here before main.js -->
+    <!-- Example: <script src="https://cdn.jsdelivr.net/npm/your-library"></script> -->
+    
+    <!-- KEEP: Main application script - compiled from src/ directory -->
+    <script type="module" src="dist/main.js"></script>
+</body>
+</html>

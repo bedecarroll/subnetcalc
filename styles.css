@@ -1,0 +1,320 @@
+/* TEMPLATE: Base styles and reset */
+/* KEEP: Box-sizing and reset for consistent layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* TEMPLATE: Body styling */
+/* CUSTOMIZE: Update colors and fonts to match your brand */
+body {
+  background: #fff;                              /* CUSTOMIZE: Your background color */
+  color: #000;                                   /* CUSTOMIZE: Your text color */
+  font-family: 'Courier New', Courier, monospace; /* CUSTOMIZE: Your font family */
+  padding: 20px;                                 /* CUSTOMIZE: Page padding */
+}
+/* TEMPLATE: Main container styling */
+/* CUSTOMIZE: Update dimensions and spacing to fit your content */
+.container {
+  max-width: 900px;           /* CUSTOMIZE: Your content width */
+  margin: 40px auto;          /* CUSTOMIZE: Vertical spacing and centering */
+  border: 4px solid #000;     /* CUSTOMIZE: Border thickness and color */
+  padding: 20px;              /* CUSTOMIZE: Internal spacing */
+}
+header {
+  border-bottom: 4px solid #000;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header p {
+  font-size: 1rem;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+input[type="text"],
+input[type="number"],
+button {
+  width: 100%;
+  border: 4px solid #000;
+  padding: 10px;
+  font-size: 1rem;
+  background: transparent;
+  color: #000;
+  font-family: inherit;
+}
+/* TEMPLATE: Input section layout */
+/* CUSTOMIZE: Add/remove sections based on your application needs */
+.input-section,
+.options-section {
+  position: relative;         /* KEEP: Required for autocomplete positioning */
+  margin-bottom: 20px;        /* CUSTOMIZE: Spacing between sections */
+}
+button {
+  margin-top: 10px;
+  cursor: pointer;
+}
+button:hover {
+  background: #000;
+  color: #fff;
+}
+.reset-btn {
+  margin-top: 10px;
+  border: 4px solid #000;
+  background: transparent;
+  color: #000;
+  font-family: inherit;
+}
+.theme-toggle-btn {
+  width: auto;
+  margin-left: 10px;
+  border: 2px solid #000;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  background: transparent;
+  color: #000;
+  font-family: inherit;
+}
+.results-section {
+  margin-top: 20px;
+  border-top: 4px solid #000;
+  padding-top: 10px;
+}
+body.dark .results-section {
+  border-color: #fff;
+}
+.result-item {
+  margin-bottom: 20px;
+}
+.result-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+.result-item p {
+  padding: 10px;
+  border: 4px solid #000;
+  background: #fff;
+}
+/* Copy button styling */
+.copy-btn {
+  display: inline-block;
+  margin-top: 5px;
+  width: auto;
+  padding: 5px 10px;
+  border: 4px solid #000;
+  background: transparent;
+  color: #000;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+.copy-btn:hover {
+  background: #000;
+  color: #fff;
+}
+.autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 4px solid #000;
+  background: #fff;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+.autocomplete-item {
+  padding: 8px;
+  white-space: nowrap;
+}
+.autocomplete-item:hover,
+.autocomplete-item.selected {
+  background: #000;
+  color: #fff;
+}
+/* TEMPLATE: Options/tags display area */
+/* CUSTOMIZE: Update class name and styling for your tag-like elements */
+.options-list {
+  margin-top: 5px;            /* CUSTOMIZE: Spacing from input */
+  display: flex;              /* KEEP: Flexible layout for tags */
+  flex-wrap: wrap;            /* KEEP: Allow wrapping on small screens */
+}
+/* Format selection buttons */
+.format-section {
+  margin: 20px 0;
+}
+.format-section label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.format-section fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.format-section legend {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #000;
+}
+.fmt-btn {
+  border: 4px solid #000;
+  background: transparent;
+  color: #000;
+  padding: 6px 12px;
+  margin-right: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+.fmt-btn:hover,
+.fmt-btn.selected {
+  background: #000;
+  color: #fff;
+}
+/* Process button distinct style */
+button.process-btn {
+  background: #000;
+  color: #fff;
+  border: 4px solid #000;
+}
+button.process-btn:hover {
+  background: transparent;
+  color: #000;
+}
+/* TEMPLATE: Individual option/tag styling */
+/* CUSTOMIZE: Update to match your tag/chip component styling */
+.option-tag {
+  display: inline-block;      /* KEEP: Inline layout for tags */
+  border: 4px solid #000;     /* CUSTOMIZE: Border style and color */
+  padding: 6px 10px;          /* CUSTOMIZE: Internal spacing */
+  margin: 2px;                /* CUSTOMIZE: Spacing between tags */
+  font-family: inherit;       /* KEEP: Consistent font */
+  font-size: 0.9rem;          /* CUSTOMIZE: Tag text size */
+  background: transparent;    /* CUSTOMIZE: Will be overridden by JS colors */
+  cursor: pointer;            /* KEEP: Indicates clickable */
+}
+.option-tag:hover {
+  background: #000 !important; /* CUSTOMIZE: Hover background */
+  color: #fff !important;       /* CUSTOMIZE: Hover text color */
+}
+/* Results list spacing */
+.results-list .result-item {
+  margin-top: 15px;
+}
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 20px;
+    padding: 15px;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Output section */
+.output {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.result-value {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 6px;
+}
+/* Ensure result text fills space and button matches height */
+.result-value p,
+.result-value pre {
+  flex: 1;
+  margin: 0;
+  padding: 10px;
+  border: 4px solid #000;
+  background: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.result-value .copy-btn {
+  flex: 0 0 auto;
+  margin-top: 0;
+  /* Match the height of the text box by stretching and applying same vertical padding */
+  align-self: stretch;
+  padding: 10px;
+  border: 4px solid #000;
+  line-height: 1;
+}
+
+/* KEEP: Dark mode styles - Provides automatic dark theme support */
+/* CUSTOMIZE: Update colors to match your dark theme palette */
+body.dark {
+  background: #000;           /* CUSTOMIZE: Dark mode background */
+  color: #fff;                /* CUSTOMIZE: Dark mode text color */
+}
+body.dark .container,
+body.dark header {
+  border-color: #fff;
+}
+body.dark input[type="text"],
+body.dark input[type="number"],
+body.dark button,
+body.dark .reset-btn,
+body.dark .theme-toggle-btn,
+body.dark .fmt-btn,
+body.dark .option-tag,
+body.dark .copy-btn,
+body.dark .autocomplete-dropdown,
+body.dark .result-item p,
+body.dark .result-item pre {
+  background: #333;
+  color: #fff;
+  border-color: #fff;
+}
+body.dark button:hover,
+body.dark .fmt-btn:hover,
+body.dark .fmt-btn.selected,
+body.dark .reset-btn:hover,
+body.dark .option-tag:hover,
+body.dark .copy-btn:hover,
+body.dark .theme-toggle-btn:hover,
+body.dark .autocomplete-item:hover,
+body.dark .autocomplete-item.selected {
+  background: #fff;
+  color: #000;
+}
+body.dark button.process-btn {
+  background: #fff;
+  color: #000;
+}
+body.dark button.process-btn:hover {
+  background: #333;
+  color: #fff;
+}
