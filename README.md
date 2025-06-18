@@ -8,7 +8,7 @@ A comprehensive web-based subnet calculator for IPv4 and IPv6 networks with adva
 - **🔢 Automatic Host Detection**: Enter IPs with or without CIDR notation (auto-assumes /32 for IPv4, /128 for IPv6)
 - **📊 Subnet Shifting**: Create subnets or supernets by changing CIDR values
 - **📋 Subnet Listing**: View all generated subnets (up to 256) when subnetting
-- **✅ IP Membership Check**: Verify if an IP belongs to a calculated subnet
+- **✅ Subnet Containment Check**: Determine if one subnet fits within another
 - **📱 Responsive Design**: Works on desktop and mobile devices
 - **🌓 Dark/Light Themes**: Toggle with localStorage persistence
 - **📋 Copy Support**: Copy any result to clipboard
@@ -44,10 +44,10 @@ Then open http://localhost:8000 in your browser.
 - **Input**: `192.168.1.100` (no CIDR)
 - **Result**: Treated as `/32` host with complete analysis
 
-### IP Membership Check
+### Subnet Containment Check
 - **Main Input**: `192.168.1.0/24`
-- **Check IP**: `192.168.1.50`
-- **Result**: ✅ YES - IP is within the subnet
+- **Compare Subnet**: `192.168.1.0/25`
+- **Result**: ✅ YES - 192.168.1.0/25 is within 192.168.1.0/24
 
 ### Subnetting (Creating Smaller Networks)
 - **Main Input**: `192.168.1.0/24`

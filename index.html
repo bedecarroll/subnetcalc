@@ -31,11 +31,11 @@
                 <div id="input-help" class="sr-only">Enter an IP address with optional CIDR notation for subnet calculation</div>
             </div>
             
-            <!-- IP Subnet Check Section -->
+            <!-- Subnet Containment Check Section -->
             <div class="input-section">
-                <label for="subnet-check-input">Check if IP is in subnet:</label>
-                <input type="text" id="subnet-check-input" placeholder="e.g., 192.168.1.100 (check against calculated subnet)" aria-describedby="subnet-check-help">
-                <div id="subnet-check-help" class="sr-only">Enter an IP address to check if it belongs to the calculated subnet</div>
+                <label for="subnet-check-input">Compare Subnet:</label>
+                <input type="text" id="subnet-check-input" placeholder="e.g., 192.168.1.0/25 (compare with main subnet)" aria-describedby="subnet-check-help">
+                <div id="subnet-check-help" class="sr-only">Enter another subnet to see if one contains the other</div>
             </div>
             
             <!-- Subnet Shift Section -->
@@ -57,7 +57,7 @@
             
             <!-- Main Calculation Button -->
             <button id="process-btn" class="process-btn" aria-describedby="process-help">Calculate</button>
-            <div id="process-help" class="sr-only">Calculate subnet information and check IP membership if both fields are filled</div>
+            <div id="process-help" class="sr-only">Calculate subnet information and determine if either subnet contains the other</div>
             
             <!-- KEEP: Results container - This gets populated by JavaScript -->
             <!-- The structure is managed by main.ts - customize the display logic there -->
