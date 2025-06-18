@@ -571,6 +571,24 @@ Calculated at: ${timestamp}`;
     }
   }
 
+  // Check if one subnet is entirely within another
+  public static isSubnetWithin(inner: SubnetInfo, outer: SubnetInfo): {result: boolean, error?: string} {
+    if (inner.ipVersion !== outer.ipVersion) {
+      return {result: false, error: 'IP versions do not match'};
+    }
+
+    if (inner.cidr < outer.cidr) {
+      // Inner subnet is larger than outer, cannot be contained
+      return {result: false};
+    }
+
+    if (inner.ipVersion === 4) {
+      return this.isIPv4InSubnet(inner.network, outer);
+    } else {
+      return this.isIPv6InSubnet(inner.network, outer);
+    }
+  }
+
   // Generate list of subnets when subnetting (splitting into smaller networks)
   public static generateSubnetList(originalSubnet: SubnetInfo, newCidr: number): string[] {
     if (newCidr <= originalSubnet.cidr) {

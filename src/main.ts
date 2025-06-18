@@ -113,17 +113,45 @@ class App {
     // Determine what to display based on inputs
     let ipCheckResult = null;
     if (checkIpText && this.lastSubnetInfo) {
-      const isInSubnet = Utils.isIPInSubnet(checkIpText, this.lastSubnetInfo);
-      const mainNetwork = `${this.lastSubnetInfo.network}/${this.lastSubnetInfo.cidr}`;
-      
-      if (isInSubnet.error) {
-        this.showError(isInSubnet.error);
+      const checkResult = Utils.processInput(checkIpText, this.currentFormat);
+      if (checkResult.error || !checkResult.subnetInfo) {
+        this.showError(checkResult.error || 'Invalid subnet');
         return;
       }
-      
-      ipCheckResult = isInSubnet.result ? 
-        `✅ YES - ${checkIpText} is within original subnet ${mainNetwork}` :
-        `❌ NO - ${checkIpText} is NOT within original subnet ${mainNetwork}`;
+
+      const checkInfo = checkResult.subnetInfo;
+      const mainInfo = this.lastSubnetInfo;
+
+      if (checkInfo.ipVersion !== mainInfo.ipVersion) {
+        this.showError('Subnets must use the same IP version');
+        return;
+      }
+
+      let inner: any, outer: any, swapped = false;
+      if (checkInfo.cidr >= mainInfo.cidr) {
+        inner = checkInfo;
+        outer = mainInfo;
+      } else {
+        inner = mainInfo;
+        outer = checkInfo;
+        swapped = true;
+      }
+
+      const containment = Utils.isSubnetWithin(inner, outer);
+      if (containment.error) {
+        this.showError(containment.error);
+        return;
+      }
+
+      if (containment.result) {
+        const innerStr = `${inner.network}/${inner.cidr}`;
+        const outerStr = `${outer.network}/${outer.cidr}`;
+        ipCheckResult = `✅ YES - ${innerStr} is within ${outerStr}`;
+      } else {
+        const innerStr = swapped ? `${mainInfo.network}/${mainInfo.cidr}` : `${checkInfo.network}/${checkInfo.cidr}`;
+        const outerStr = swapped ? `${checkInfo.network}/${checkInfo.cidr}` : `${mainInfo.network}/${mainInfo.cidr}`;
+        ipCheckResult = `❌ NO - ${innerStr} is NOT within ${outerStr}`;
+      }
     }
     
     // Display results based on what inputs were provided
