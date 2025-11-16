@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/main.ts",
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.9.3"
   },
   "description": "A comprehensive web-based subnet calculator for IPv4 and IPv6 networks with advanced features",
   "scripts": {
