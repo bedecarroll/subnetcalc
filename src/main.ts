@@ -514,14 +514,19 @@ Wildcard Mask: ${subnet.wildcardMask}`
   }
 
   private showError(message: string): void {
-    this.resultsDiv.innerHTML = `
-      <div class="error-message">
-        <h3>Error:</h3>
-        <p>${message}</p>
-      </div>
-      <div id="output" class="output"></div>
-      <div id="results-list" class="results-list"></div>
-    `;
+    this.resetResultsContainer();
+    const errorDiv = document.createElement("div");
+    errorDiv.className = "error-message";
+
+    const errorTitle = document.createElement("h3");
+    errorTitle.textContent = "Error:";
+
+    const errorText = document.createElement("p");
+    errorText.textContent = message;
+
+    errorDiv.appendChild(errorTitle);
+    errorDiv.appendChild(errorText);
+    this.resultsDiv.insertBefore(errorDiv, this.resultsDiv.firstChild);
     this.resultsDiv.style.display = "block";
   }
 
